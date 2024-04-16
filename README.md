@@ -31,6 +31,8 @@ The data cleaning process includes ensuring proper date, time and temperature fo
 ### speed - temperature
 <img src="CarGraphs/speedVStemperature1.png" height = 300, width = 450>
 
+This graph is a scatter plot that examines the relationship between two continuous variables: the speed of cars (in mph) and the temperature (in °F) at the time the speed was recorded. Observing the image there is a cluster of data points spread vertically at specific temperatures (61°F, 67°F, and 71°F), representing the speed of the different cars recorded by the speed radar. The blue line explains the average speed at each level of temperature, which doesn't change too much. The flatness of the line indicates no strong positive or negative correlation between the temperature and the speed of cars. Apart from that, there are some outliers at both 61°F and 71°F.
+
 ```
 #Scatter plot with a trend line for SPEED-TEMPERATURE
 ggplot(car_data, aes(x = Temperature, y = Speed)) +
@@ -50,6 +52,8 @@ ggplot(car_data, aes(x = Temperature, y = Speed)) +
 
 ### speed - state license plate
 <img src="CarGraphs/speedVSlicenseplate1.png" height = 300, width = 450>
+
+This is a segmented bar chart that displays the distribution of car speeds within different ranges for cars from different license plate states (IA for Iowa, IL for Illinois, and MI for Michigan).
 
 ```
 #Categorizing the speeds into ranges
