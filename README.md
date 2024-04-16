@@ -31,12 +31,14 @@ The data cleaning process includes ensuring proper date, time and temperature fo
 ### speed - temperature
 <img src="CarGraphs/speedVStemperature1.png" height = 300, width = 450>
 
-This graph is a scatter plot that examines the relationship between two continuous variables: the speed of cars (in mph) and the temperature (in °F) at the time the speed was recorded. Observing the image there is a cluster of data points spread vertically at specific temperatures (61°F, 67°F, and 71°F), representing the speed of the different cars recorded by the speed radar. The blue line explains the average speed at each level of temperature, which doesn't change too much. The flatness of the line indicates no strong positive or negative correlation between the temperature and the speed of cars. Apart from that, there are some outliers at both 61°F and 71°F.
+This graph is a scatter plot that examines the relationship between two continuous variables: the speed of cars (in mph) and the temperature (in °F) at the time the speed was recorded.
+
+Observing the image there is a cluster of data points spread vertically at specific temperatures (61°F, 67°F, and 71°F), representing the speed of the different cars recorded by the speed radar. The blue line explains the average speed at each level of temperature, which doesn't change too much. The flatness of the line indicates no strong positive or negative correlation between the temperature and the speed of cars. Apart from that, there are some outliers at both 61°F and 71°F.
 
 ```
 #Scatter plot with a trend line for SPEED-TEMPERATURE
 ggplot(car_data, aes(x = Temperature, y = Speed)) +
-  geom_point(alpha = 0.5) + # Alpha for transparency on points
+  geom_point(alpha = 0.5) +
   geom_smooth(method = lm, color = "blue", se = FALSE) + 
   labs(
     title = "Speed vs. Temperature",
@@ -53,7 +55,13 @@ ggplot(car_data, aes(x = Temperature, y = Speed)) +
 ### speed - state license plate
 <img src="CarGraphs/speedVSlicenseplate1.png" height = 300, width = 450>
 
-This is a segmented bar chart that displays the distribution of car speeds within different ranges for cars from different license plate states (IA for Iowa, IL for Illinois, and MI for Michigan).
+This is a segmented bar chart that displays the distribution of car speeds within different ranges for cars from different license plate states (IA for Iowa, IL for Illinois, and MI for Michigan). Most of the cars in the dataset are in the speed range of "20-29 mph", with Illinois (IL) having the highest count in this range. Also, the range of "34-39 mph" also has a considerable amount of cars driving at that speed. 
+
+In terms of state-speed observations, cars with Iowa (IA) license plates have the least variation in speed, with a very low count across the board and no cars exceeding 29 mph. Illinois (IL) is the state with the most amount of cars, observing the biggest amount of cars driving in the range of "34-39 mph". The least number of cars come from Michigan (MI), with only one car recorded driving at 36 mph.
+
+The graph suggests that cars with Illinois license plates may tend to drive faster compared to Iowa and Michigan, given the counts in the higher speed range.
+
+Last, the sample sizes for each state may influence the interpretation.
 
 ```
 #Categorizing the speeds into ranges
