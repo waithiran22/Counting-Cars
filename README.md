@@ -29,7 +29,7 @@ The data cleaning process includes ensuring proper date, time and temperature fo
 ---
 ## Graphs
 ### speed - temperature
-<img src="CarGraphs/speedVStemperature1.png" height = 250, width = 400>
+<img src="CarGraphs/speedVStemperature1.png" height = 300, width = 450>
 
 ```
 #Scatter plot with a trend line for SPEED-TEMPERATURE
@@ -49,7 +49,7 @@ ggplot(car_data, aes(x = Temperature, y = Speed)) +
 ```
 
 ### speed - state license plate
-<img src="CarGraphs/speedVSlicenseplate1.png" height = 250, width = 400>
+<img src="CarGraphs/speedVSlicenseplate1.png" height = 300, width = 450>
 
 ```
 #Categorizing the speeds into ranges
@@ -70,7 +70,7 @@ ggplot(car_data, aes(x = SpeedRange, fill = License_plate_state)) +
 ```
 
 ### speed - time of the day
-<img src="CarGraphs/speedVStimeday1.png" height = 300, width = 450>
+<img src="CarGraphs/speedVStimeday1.png" height = 300, width = 600>
 
 ```
 #Categorizing the times into sections of the day
