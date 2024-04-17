@@ -32,7 +32,9 @@ The data cleaning process includes ensuring proper date, time and temperature fo
 Below are the plots generated from the collected data, along with the R code used to create each visual.
 
 1. Distribution of Vehicle Speeds
+<img src="CarGraphs/Distribution of Vehicle Speeds...png" height = 300, width = 450>
 This histogram shows the distribution of vehicle speeds with an overlay of the average speed marked by a dashed red line.
+
 ```
 ggplot(car_data, aes(x = Speed)) +
   geom_histogram(binwidth = 5, fill = "#8A2BE2", color = "black") +
@@ -45,7 +47,9 @@ ggplot(car_data, aes(x = Speed)) +
 ```
 
 2. Speed Distribution by Weather Condition
-This boxplot categorizes vehicle speeds by different weather conditions, showing variations in speed with weather changes.
+<img src="CarGraphs/Speed Distribution by weather Condition.png" height = 300, width = 450>
+This boxplot categorizes vehicle speeds by different weather conditions, showing variations in speed with weather changes.Vehicles tend to go faster when it's sunny, as indicated by the higher median speed (central line of the yellow box). The spread of speeds during sunny weather is greater, shown by the taller box, suggesting more variability in how fast people drive when it's sunny compared to cloudy weather.
+
 ```
 ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
   geom_boxplot() +
@@ -55,8 +59,42 @@ ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
   ylab("Speed (mph)") +
   theme_light()
 ```
-3. Vehicle Speed Distribution by State
-A violin plot represents the distribution of speeds across different states, with data points superimposed to show individual observations.
+
+3. Top 5 Car Colors in Each State
+ <img src="CarGraphs/Top 5 Car Colors in Each State..png" height = 300, width = 450>
+
+This bar chart displays the most common vehicle colors in the top five frequency for three different states. Black and white are prominent in Illinois, indicating a preference for standard car colors, while Iowa shows a notable count for grey and blue as well. Michigan has a strong presence of black vehicles.
+```
+ggplot(color_counts, aes(x = License_plate_state, y = Count, fill = Color)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  scale_fill_manual(values = c("black" = "black", "blue" = "blue", "grey" = "grey", "red" = "red", "white" = "beige")) +
+  labs(title = "Top 5 Car Colors in Each State",
+       x = "State",
+       y = "Count of Cars") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = "bottom")
+```
+4. Average Vehicle Speed by Exact Time of Day
+<img src="CarGraphs/Average Vehicle Speed by Exact Time of Day..png" height = 300, width = 450>
+
+The line chart demonstrates how the average vehicle speed changes over the course of an afternoon to evening timeframe. Points represent individual speed observations, while the line indicates the trend over time.Vehicle speeds slightly increase as the day progresses from early to late afternoon. The spread of points indicates some variability in speeds at each time, but the overall trend is upward.
+```
+ggplot(speed_by_timeHM, aes(x = Time, y = AvgSpeed)) +
+  geom_line(color = "#00BFA8") +
+  geom_point(color = "#F8766D", size = 2) +
+  scale_x_datetime(date_labels = "%H:%M", date_breaks = "1 hour") +
+  labs(title = "Average Vehicle Speed by Exact Time of Day",
+       x = "Time of Day (13:00 - 19:00)",
+       y = "Average Speed (mph)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5),
+        plot.title = element_text(hjust = 0.5),
+        legend.position = "none")
+```
+5. Vehicle Speed Distribution by State
+<img src="CarGraphs/Vehicle Speed Distribution by State..png" height = 300, width = 450>
+A violin plot represents the distribution of speeds across different states, with data points superimposed to show individual observations.Iowa has a fairly consistent speed distribution, Illinois shows more variability, and Michigan has a concentrated range of speeds, mostly between 25 and 35 mph. The shapes suggest different driving patterns or enforcement across the states.
 
 ```
 ggplot(car_data, aes(x = License_plate_state, y = Speed, fill = License_plate_state)) +
@@ -67,6 +105,10 @@ ggplot(car_data, aes(x = License_plate_state, y = Speed, fill = License_plate_st
   theme_light() +
   theme(legend.position = "none", plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+
+
+
 
 ### speed - temperature
 <img src="CarGraphs/speedVStemperature1.png" height = 300, width = 450>
