@@ -95,8 +95,7 @@ ggplot(speed_by_timeHM, aes(x = Time, y = AvgSpeed)) +
 ```
 5. Vehicle Speed Distribution by State
 <img src="CarGraphs/Vehicle Speed Distribution by State..png" height = 300, width = 450>
-A violin plot represents the distribution of speeds across different states, with data points superimposed to show individual observations.Iowa has a fairly consistent speed distribution, Illinois shows more variability, and Michigan has a concentrated range of speeds, mostly between 25 and 35 mph. The shapes suggest different driving patterns or enforcement across the states.
-
+A violin plot represents the distribution of speeds across different states, with data points to show individual observations.A, IL, and MI. IA has a narrow spread around 30 mph, IL has a broader distribution centered near 25 mph, and MI has a tight cluster around 20 mph. The width indicates how common speeds are, and dots represent individual data points, with some possible outliers.
 ```
 ggplot(car_data, aes(x = License_plate_state, y = Speed, fill = License_plate_state)) +
   geom_violin(trim = FALSE, alpha = 0.7) +
