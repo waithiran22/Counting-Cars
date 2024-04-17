@@ -28,7 +28,46 @@ Key Columns:
 The data cleaning process includes ensuring proper date, time and temperature formats, and preparing the data for analysis.
 
 ---
-## Graphs
+## Graphs and Analysis
+Below are the plots generated from the collected data, along with the R code used to create each visual.
+
+1. Distribution of Vehicle Speeds
+This histogram shows the distribution of vehicle speeds with an overlay of the average speed marked by a dashed red line.
+```
+ggplot(car_data, aes(x = Speed)) +
+  geom_histogram(binwidth = 5, fill = "#8A2BE2", color = "black") +
+  geom_vline(aes(xintercept = mean(Speed)), color = "red", linetype = "dashed", size = 1) +
+  ggtitle("Distribution of Vehicle Speeds") +
+  xlab("Speed (mph)") +
+  ylab("Frequency") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+2. Speed Distribution by Weather Condition
+This boxplot categorizes vehicle speeds by different weather conditions, showing variations in speed with weather changes.
+```
+ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
+  geom_boxplot() +
+  scale_fill_manual(values = weather_colors) +
+  ggtitle("Speed Distribution by Weather Condition") +
+  xlab("Weather") +
+  ylab("Speed (mph)") +
+  theme_light()
+```
+3. Vehicle Speed Distribution by State
+A violin plot represents the distribution of speeds across different states, with data points superimposed to show individual observations.
+
+```
+ggplot(car_data, aes(x = License_plate_state, y = Speed, fill = License_plate_state)) +
+  geom_violin(trim = FALSE, alpha = 0.7) +
+  geom_point(position = position_jitter(width = 0.1), alpha = 0.5, color = "black", size = 1.5) +
+  stat_summary(fun = median, geom = "line", aes(group = License_plate_state), color = "white", size = 1.5) +
+  scale_fill_brewer(palette = "Set3") +
+  theme_light() +
+  theme(legend.position = "none", plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
 ### speed - temperature
 <img src="CarGraphs/speedVStemperature1.png" height = 300, width = 450>
 
