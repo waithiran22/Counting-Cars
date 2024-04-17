@@ -2,7 +2,7 @@
 
 ## This repository presents the data analysis and findings from the Counting Cars project, where speeds of 150 vehicles were recorded. Conducted collaboratively by Waithira Ng'ang'a, Nicolas Navarro, and Avery Frick, the project offers insights into vehicle speed behavior in the area.
 ---
-## Research Paper-- ((http://127.0.0.1:4596/))
+## Research Paper-- (http://127.0.0.1:4596/)
 ## Data Dictionary📖
 The data for this project was collected individually from the speed rador on 30th St and 24th Avenue in Rock Island, IL.
 
