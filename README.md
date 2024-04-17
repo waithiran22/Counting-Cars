@@ -48,7 +48,7 @@ ggplot(car_data, aes(x = Speed)) +
 
 2. Speed Distribution by Weather Condition
 <img src="CarGraphs/Speed Distribution by weather Condition.png" height = 300, width = 450>
-This boxplot categorizes vehicle speeds by different weather conditions, showing variations in speed with weather changes.Vehicles tend to go faster when it's sunny, as indicated by the higher median speed (central line of the yellow box). The spread of speeds during sunny weather is greater, shown by the taller box, suggesting more variability in how fast people drive when it's sunny compared to cloudy weather.
+This boxplot categorizes vehicle speeds by different weather conditions, showing variations in speed with weather changes.Vehicles tend to go faster when it's cloudy, as indicated by the higher median speed (central line of the purple box). The spread of speeds during sunny weather is greater, shown by the taller box, suggesting more variability in how fast people drive when it's sunny compared to cloudy weather.
 
 ```
 ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
