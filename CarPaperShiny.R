@@ -1,32 +1,24 @@
+# Load the Shiny library
 library(shiny)
-library(ggplot2)
-library(DT)
-library(readxl)
 
-# Set working directory and read dataset
-#setwd('C:\\Users\\bro12\\Desktop\\Desktop\\Data332\\In Class\\Cars')
-dataset <- read_excel('CarData .xlsx', .name_repair = 'universal')
-dataset <- na.omit(dataset)
-column_names <- colnames(dataset)  # Get column names for input selection
-
-# Define a custom theme for ggplot
-my_theme <- function() {
-  theme_minimal() +
-    theme(
-      text = element_text(color = "#333333"),  # Set text color
-      plot.background = element_rect(fill = "#F5F5F5", color = NA),  # Set plot background color and remove border
-      panel.background = element_rect(fill = "#FFFFFF"),  # Set panel background color
-      panel.border = element_blank(),  # Remove panel border
-      axis.line = element_line(color = "#333333"),  # Set axis line color
-      axis.text = element_text(color = "#333333"),  # Set axis text color
-      legend.text = element_text(color = "#333333")  # Set legend text color
-    )
-}
-
-ui2 <- fluidPage(
-  titlePanel("Effectiveness of Radar Speed Signs"),
+# Define UI for the application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Speed Radar Signs Paper"),
+  
+  # Main panel to display the text
   mainPanel(
-    h4("The radar speed sign is formally called a Dynamic Speed Monitoring Display (DSMD) or
+    # Text output
+    htmlOutput("analysis_text")
+  )
+)
+
+# Define server logic
+server <- function(input, output) {
+  
+  # Render the text
+  output$analysis_text <- renderText({"The radar speed sign is formally called a Dynamic Speed Monitoring Display (DSMD) or
 Dynamic Speed Feedback Sign (DSFS). There are different types of DSMD, portable chargeable
 message signs (PCMS), speed monitoring displays (SMD), and speed display tailers (SDT).
 They are either trailer based/portable or are permanent/mounted. A DSMD sign in combination
@@ -80,37 +72,9 @@ sign deployments. https://safety.fhwa.dot.gov/speedmgt/ref_mats/fhwasa1304/1_36.
 
 Williamson, M. R., Fries, R. N., & Zhou, H. (2016, April). Long-term effectiveness of radar
 speed display signs in a university environment. SPARK.
-https://spark.siue.edu/siue_fac/62/"),
-    verbatimTextOutput("essay_output")
-  )
-)
-
-# Define UI for the first page
-ui <- fluidPage(
-  titlePanel("Car Data Research Paper- Avery, Nico, Waithira"),
-    tabPanel("Second Page", ui2)
-  )
-
-
-# Define server logic for both pages
-server <- function(input, output, session) {
-  
-  # Server logic for the first page
-  output$plot_01 <- renderPlot({
-    ggplot(dataset, aes_string(x = input$X, y = input$Y, colour = input$Splitby)) +
-      geom_point() +
-      labs(x = input$X, y = input$Y) +  # Set axis labels dynamically
-      my_theme()  # Apply custom theme to the plot
-  })
-  
-  output$table_01 <- renderDT({
-    dataset[, c(input$X, input$Y, input$Splitby)]
-  }, options = list(pageLength = 10))  # Increase page length for better display
-  
-  # Server logic for the second page remains the same
-  
+https://spark.siue.edu/siue_fac/62/"
+     })
 }
 
-# Combine both UIs into a single application
+# Run the application
 shinyApp(ui = ui, server = server)
-
