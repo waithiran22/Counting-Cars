@@ -206,5 +206,18 @@ ggplot(car_data, aes(x = TimeOfDay, y = Speed)) +
 
 
 # Part 2 (COMBINED DATA)
+### Distrubution of Vehicle Speeds 
+<img src="CarGraphs/Combined Graphs/distributionSpeed.png" height = 300, width = 600>
+
+### Speed Dsitrubution by weather condition 
+<img src="CarGraphs/Combined Graphs/speeddistributionWeather.png" height = 300, width = 600>
+
+### Average Vehicle Speed by time of the day 
+<img src="CarGraphs/Combined Graphs/averageVehicleSpeed.png" height = 300, width = 600>
+
+### Speed versus Temperature 
+<img src="CarGraphs/Combined Graphs/speedTempCombined.png" height = 300, width = 600>
+
 ## Introduction
 The next part of the project integrates the data collected by the eight different teams to examine vehicle speed patterns with a larger sample size. By comparing the individual datasets to the aggregated data, we aim to understand the impact of sample size on the variability and reliability of our findings, and to uncover broader trends that may not be visible in smaller, segmented data.
+
