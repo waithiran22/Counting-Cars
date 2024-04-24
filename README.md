@@ -208,15 +208,73 @@ ggplot(car_data, aes(x = TimeOfDay, y = Speed)) +
 # Part 2 (COMBINED DATA)
 ### Distribution of Vehicle Speeds 
 <img src="CarGraphs/Combined Graphs/distributionSpeed.png" height = 300, width = 600>
+``` 
+ggplot(car_data, aes(x = Speed)) +
+  geom_histogram(binwidth = 5, fill = "#8A2BE2", color = "black") + 
+  geom_vline(aes(xintercept = mean(Speed)), color = "red", linetype = "dashed", size = 1) +
+  ggtitle("Distribution of Vehicle Speeds") +
+  xlab("Speed (mph)") +
+  ylab("Frequency") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))  
+```
 
 ### Speed Distrubution by Weather Condition 
 <img src="CarGraphs/Combined Graphs/speeddistributionWeather.png" height = 300, width = 600>
+```
+weather_colors <- c("Sunny" = "yellow", "Cloudy" = "purple")
+ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
+  geom_boxplot() +
+  scale_fill_manual(values = weather_colors) +
+  ggtitle("Speed Distribution by Weather Condition") +
+  xlab("Weather") +
+  ylab("Speed (mph)") +
+  theme_light() +
+  scale_fill_viridis_d()
+```
 
 ### Average Vehicle Speed by Time of the Day 
 <img src="CarGraphs/Combined Graphs/averageVehicleSpeed.png" height = 300, width = 600>
+```
+car_data$Time <- format(as.POSIXct(car_data$Time), format = "%H:%M:%S")
+
+car_data$TimeCategory <- ifelse(car_data$Time < 14, "Afternon", "Evening")
+
+speed_by_timeHM <- car_data %>%
+  group_by(Time) %>%
+  summarise(AvgSpeed = mean(Speed, na.rm = TRUE)) %>%
+  mutate(Time = as.POSIXct(Time, format = "%H:%M"))
+
+ggplot(speed_by_timeHM, aes(x = Time, y = AvgSpeed)) +
+  geom_line(color = "#00BFA8") + 
+  geom_point(color = "#F8766D", size = 2) +  
+  scale_x_datetime(date_labels = "%H:%M", date_breaks = "1 hour", 
+                   limits = as.POSIXct(c('13:00', '19:00'), format = "%H:%M")) +
+  labs(title = "Average Vehicle Speed by Exact Time of Day",
+       x = "Time of Day (13:00 - 19:00)",
+       y = "Average Speed (mph)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5),  
+        plot.title = element_text(hjust = 0.5), 
+        legend.position = "none")  ```
 
 ### Speed versus Temperature 
 <img src="CarGraphs/Combined Graphs/speedTempCombined.png" height = 300, width = 600>
+```
+ggplot(car_data, aes(x = Temperature, y = Speed)) +
+  geom_point(alpha = 0.5) + # Alpha for transparency on points
+  geom_smooth(method = lm, color = "blue", se = FALSE) + # Add a linear regression line without the confidence interval shaded
+  labs(
+    title = "Speed vs. Temperature",
+    x = "Temperature (°F)",
+    y = "Speed (mph)"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(), 
+    panel.grid.major.x = element_blank()
+  )
+```
 
 ## Introduction
 The next part of the project integrates the data collected by the eight different teams to examine vehicle speed patterns with a larger sample size. By comparing the individual datasets to the aggregated data, we aim to understand the impact of sample size on the variability and reliability of our findings, and to uncover broader trends that may not be visible in smaller, segmented data.
