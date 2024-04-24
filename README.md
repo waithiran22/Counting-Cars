@@ -206,6 +206,9 @@ ggplot(car_data, aes(x = TimeOfDay, y = Speed)) +
 
 
 # Part 2 (COMBINED DATA)
+[combinedDataOutput.xlsx](https://github.com/waithiran22/Counting-Cars/files/15087237/combinedDataOutput.xlsx)
+
+
 ### Distribution of Vehicle Speeds 
 <img src="CarGraphs/Combined Graphs/distributionSpeed.png" height = 300, width = 600>
 ``` 
@@ -257,12 +260,12 @@ ggplot(speed_by_timeHM, aes(x = Time, y = AvgSpeed)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5),  
         plot.title = element_text(hjust = 0.5), 
         legend.position = "none")
+
+
+
+### Speed versus Temperature
+<img src="CarGraphs/Combined Graphs/speedTempCombined.png" height = 300, width = 600> 
 ```
-
-### Speed versus Temperature 
-
-<img src="CarGraphs/Combined Graphs/speedTempCombined.png" height = 300, width = 600>
-```  
 ggplot(car_data, aes(x = Temperature, y = Speed)) +
   geom_point(alpha = 0.5) + # Alpha for transparency on points
   geom_smooth(method = lm, color = "blue", se = FALSE) + # Add a linear regression line without the confidence interval shaded
@@ -277,6 +280,7 @@ ggplot(car_data, aes(x = Temperature, y = Speed)) +
     panel.grid.major.x = element_blank()
   )
 ``` 
+
 ## Introduction
 The next part of the project integrates the data collected by the eight different teams to examine vehicle speed patterns with a larger sample size. By comparing the individual datasets to the aggregated data, we aim to understand the impact of sample size on the variability and reliability of our findings, and to uncover broader trends that may not be visible in smaller, segmented data.
 
