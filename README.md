@@ -1,5 +1,5 @@
 # Counting Cars🚗
-
+# Part 1
 ## This repository presents the data analysis and findings from the Counting Cars project, where speeds of 150 vehicles were recorded. Conducted collaboratively by Waithira Ng'ang'a, Nicolas Navarro, and Avery Frick, the project offers insights into vehicle speed behavior in the area.
 ---
 ## Research Paper-- (https://averyfrick20.shinyapps.io/carShiny/) 
@@ -202,3 +202,9 @@ ggplot(car_data, aes(x = TimeOfDay, y = Speed)) +
   ) +
   scale_x_discrete(limits = c("Early Morning", "Mid Morning", "Early Afternoon", "Mid Afternoon", "Evening", "Night"))
 ```
+
+
+
+# Part 2 (COMBINED DATA)
+## Introduction
+The next part of the project integrates the data collected by the eight different teams to examine vehicle speed patterns with a larger sample size. By comparing the individual datasets to the aggregated data, we aim to understand the impact of sample size on the variability and reliability of our findings, and to uncover broader trends that may not be visible in smaller, segmented data.
