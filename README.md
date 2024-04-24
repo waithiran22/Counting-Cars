@@ -206,13 +206,13 @@ ggplot(car_data, aes(x = TimeOfDay, y = Speed)) +
 
 
 # Part 2 (COMBINED DATA)
-### Distrubution of Vehicle Speeds 
+### Distribution of Vehicle Speeds 
 <img src="CarGraphs/Combined Graphs/distributionSpeed.png" height = 300, width = 600>
 
-### Speed Dsitrubution by weather condition 
+### Speed Distrubution by Weather Condition 
 <img src="CarGraphs/Combined Graphs/speeddistributionWeather.png" height = 300, width = 600>
 
-### Average Vehicle Speed by time of the day 
+### Average Vehicle Speed by Time of the Day 
 <img src="CarGraphs/Combined Graphs/averageVehicleSpeed.png" height = 300, width = 600>
 
 ### Speed versus Temperature 
