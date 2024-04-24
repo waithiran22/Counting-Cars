@@ -206,12 +206,34 @@ ggplot(car_data, aes(x = TimeOfDay, y = Speed)) +
 
 
 # Part 2 (COMBINED DATA)
-[combinedDataOutput.xlsx](https://github.com/waithiran22/Counting-Cars/files/15087237/combinedDataOutput.xlsx)
+## Introduction
+The next part of the project integrates the data collected by the eight different teams to examine vehicle speed patterns with a larger sample size. By comparing the individual datasets to the aggregated data, our goal is to understand the impact of sample size on the variability and reliability of our findings, and to discover other trends that we wouldn't able to see with the smaller data.
+
+## Data Dictionary📖
+The data dictionary for the combined dataset includes the following variables:
+
+- Date: The date of observation.
+- Temperature: Ambient temperature during observation.
+- Weather: Weather condition at the time of observation.
+- Time: Time when the speed was recorded.
+- Speed: Speed of the vehicle as captured by the radar.
+- Color: Color of the vehicle.
+
+## Data Cleaning Process 🧹
+The combined dataset underwent a lot of cleaning to like resolving discrepancies in weather condition terminology, and standardizing time records, etc.
+
+Here is our combined data excel sheet that we obtained from the code.
+### [combinedDataOutput.xlsx](https://github.com/waithiran22/Counting-Cars/files/15087237/combinedDataOutput.xlsx)
 
 
-### Distribution of Vehicle Speeds 
-<img src="CarGraphs/Combined Graphs/distributionSpeed.png" height = 300, width = 600>
-``` 
+## New graphs and analysis 
+
+1. Distribution of Vehicle Speeds 
+<img src="CarGraphs/Combined Graphs/distributionSpeed.png" height = 300, width = 450>
+
+The new histogram shows a concentration of speeds around the 30 mph range, indicated by the tallest bar. However, with the new data we can see how the red line moves to the left indicating that the average vehicle speed is smaller in the combined data.
+
+```
 ggplot(car_data, aes(x = Speed)) +
   geom_histogram(binwidth = 5, fill = "#8A2BE2", color = "black") + 
   geom_vline(aes(xintercept = mean(Speed)), color = "red", linetype = "dashed", size = 1) +
@@ -222,8 +244,11 @@ ggplot(car_data, aes(x = Speed)) +
   theme(plot.title = element_text(hjust = 0.5))  
 ```
 
-### Speed Distrubution by Weather Condition 
-<img src="CarGraphs/Combined Graphs/speeddistributionWeather.png" height = 300, width = 600>
+2. Speed Distrubution by Weather Condition 
+<img src="CarGraphs/Combined Graphs/speeddistributionWeather.png" height = 300, width = 550>
+
+This boxplot graphically explains the distribution of vehicle speeds across different weather conditions. No clear trend indicates that weather has a significant impact on speed, as the median speeds are relatively close across different weather types. However, with the combined data we got new weather conditions such as partly cloudy.
+
 ```
 weather_colors <- c("Sunny" = "yellow", "Cloudy" = "purple")
 ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
@@ -236,8 +261,11 @@ ggplot(car_data, aes(x = Weather, y = Speed, fill = Weather)) +
   scale_fill_viridis_d()
 ```
 
-### Average Vehicle Speed by Time of the Day 
-<img src="CarGraphs/Combined Graphs/averageVehicleSpeed.png" height = 300, width = 600>
+3. Average Vehicle Speed by Time of the Day 
+<img src="CarGraphs/Combined Graphs/averageVehicleSpeed.png" height = 300, width = 450>
+
+This new shows the fluctuation of average car speeds over the course of an afternoon to early evening (13:00 to 19:00). In comparison to our individual data graph, here there are more specific times at which the data was collected. After getting this graph from the combined data, we can see that at 13:00, 14:00, and 18:00 (which were the times in which we collected out own data), the average speeds are almost the same so it barely changed. Furthermore, now we can tell that the time of the day at which cars go the fastest is at 18:30 thanks to a bigger data collection.
+
 ```
 car_data$Time <- format(as.POSIXct(car_data$Time), format = "%H:%M:%S")
 
@@ -260,11 +288,13 @@ ggplot(speed_by_timeHM, aes(x = Time, y = AvgSpeed)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5),  
         plot.title = element_text(hjust = 0.5), 
         legend.position = "none")
+```
 
+4. Speed versus Temperature
+<img src="CarGraphs/Combined Graphs/speedTempCombined.png" height = 300, width = 450>
 
+In this scatter plot, the horizontal blue line represents the linear regression line. It is literally flat from out observation. This means that there's little to no correlation between temperature and vehicle speed, as the line does not have a positive or negative slope. Therefore, there's no apparent trend that would indicate temperature has a significant effect on vehicle speed.
 
-### Speed versus Temperature
-<img src="CarGraphs/Combined Graphs/speedTempCombined.png" height = 300, width = 600> 
 ```
 ggplot(car_data, aes(x = Temperature, y = Speed)) +
   geom_point(alpha = 0.5) + # Alpha for transparency on points
@@ -281,6 +311,9 @@ ggplot(car_data, aes(x = Temperature, y = Speed)) +
   )
 ``` 
 
-## Introduction
-The next part of the project integrates the data collected by the eight different teams to examine vehicle speed patterns with a larger sample size. By comparing the individual datasets to the aggregated data, we aim to understand the impact of sample size on the variability and reliability of our findings, and to uncover broader trends that may not be visible in smaller, segmented data.
+## Conclusion
+The comparison between the initial graphs, representing individual data collection, and the new graphs, which combine data from all eight groups, highlights the value of larger datasets in clarifying patterns and trends.
 
+With the aggregated data we have a more accurate picture of vehicle behaviors. It avoids the anomalies that may have appeared in smaller samples and reduces the impact of outliers, resulting in a better understanding of the overall trends. So, the conclusions we had from the individual datasets did not change top much with the combined dataset. Instead, this last one reinforced the trends we previously observed. 
+
+To sum up, expanding the dataset has reinforced the reliability of the observed trends, without altering the initial insights from the individual data collections.
