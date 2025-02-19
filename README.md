@@ -1,8 +1,7 @@
 # Counting Cars🚗
 # Part 1
-## This repository presents the data analysis and findings from the Counting Cars project, where speeds of 150 vehicles were recorded. Conducted collaboratively by Waithira Ng'ang'a, Nicolas Navarro, and Avery Frick, the project offers insights into vehicle speed behavior in the area.
+## This repository presents the data analysis and findings from the Counting Cars project, where speeds of 150 vehicles were recorded.
 ---
-## Research Paper-- (https://averyfrick20.shinyapps.io/carShiny/) 
 [Car Data Paper.pdf](https://github.com/waithiran22/Counting-Cars/files/15017757/Car.Data.Paper.pdf)
 
 ## Data Dictionary📖
